@@ -7,7 +7,7 @@ package user
 
 import (
 	"github.com/setcreed/miniblog/internal/miniblog/biz"
-	"github.com/setcreed/miniblog/internal/pkg/store"
+	"github.com/setcreed/miniblog/internal/miniblog/store"
 	"github.com/setcreed/miniblog/pkg/auth"
 	pb "github.com/setcreed/miniblog/pkg/proto/miniblog/v1"
 )

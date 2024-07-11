@@ -13,10 +13,10 @@ import (
 	"github.com/jinzhu/copier"
 	"gorm.io/gorm"
 
+	"github.com/setcreed/miniblog/internal/miniblog/store"
 	"github.com/setcreed/miniblog/internal/pkg/errno"
 	"github.com/setcreed/miniblog/internal/pkg/log"
 	"github.com/setcreed/miniblog/internal/pkg/model"
-	"github.com/setcreed/miniblog/internal/pkg/store"
 	v1 "github.com/setcreed/miniblog/pkg/api/miniblog/v1"
 	"github.com/setcreed/miniblog/pkg/auth"
 	"github.com/setcreed/miniblog/pkg/token"
@@ -29,6 +29,8 @@ type UserBiz interface {
 	Login(ctx context.Context, r *v1.LoginRequest) (*v1.LoginResponse, error)
 	Get(ctx context.Context, username string) (*v1.GetUserResponse, error)
 	List(ctx context.Context, offset, limit int) (*v1.ListUserResponse, error)
+	Update(ctx context.Context, username string, r *v1.UpdateUserRequest) error
+	Delete(ctx context.Context, username string) error
 }
 
 // UserBiz 接口的实现.
@@ -145,4 +147,39 @@ func (b *userBiz) List(ctx context.Context, offset, limit int) (*v1.ListUserResp
 	log.C(ctx).Debugw("Get users from backend storage", "count", len(users))
 
 	return &v1.ListUserResponse{TotalCount: count, Users: users}, nil
+}
+
+// Update 是 UserBiz 接口中 `Update` 方法的实现.
+func (b *userBiz) Update(ctx context.Context, username string, user *v1.UpdateUserRequest) error {
+	userM, err := b.ds.Users().Get(ctx, username)
+	if err != nil {
+		return err
+	}
+
+	if user.Email != nil {
+		userM.Email = *user.Email
+	}
+
+	if user.Nickname != nil {
+		userM.Nickname = *user.Nickname
+	}
+
+	if user.Phone != nil {
+		userM.Phone = *user.Phone
+	}
+
+	if err := b.ds.Users().Update(ctx, userM); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// Delete 是 UserBiz 接口中 `Delete` 方法的实现.
+func (b *userBiz) Delete(ctx context.Context, username string) error {
+	if err := b.ds.Users().Delete(ctx, username); err != nil {
+		return err
+	}
+
+	return nil
 }

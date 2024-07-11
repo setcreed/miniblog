@@ -6,6 +6,7 @@
 package miniblog
 
 import (
+	"github.com/setcreed/miniblog/internal/miniblog/store"
 	"os"
 	"path/filepath"
 	"strings"
@@ -14,7 +15,6 @@ import (
 	"github.com/spf13/viper"
 
 	"github.com/setcreed/miniblog/internal/pkg/log"
-	"github.com/setcreed/miniblog/internal/pkg/store"
 	"github.com/setcreed/miniblog/pkg/db"
 )
 

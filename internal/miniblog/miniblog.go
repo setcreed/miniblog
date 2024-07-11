@@ -19,6 +19,8 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
+	"github.com/setcreed/miniblog/internal/pkg/core"
+	"github.com/setcreed/miniblog/internal/pkg/errno"
 	"github.com/setcreed/miniblog/internal/pkg/log"
 	mw "github.com/setcreed/miniblog/internal/pkg/middleware"
 	"github.com/setcreed/miniblog/pkg/version/verflag"
@@ -95,12 +97,14 @@ func run() error {
 
 	// 注册 404 Handler.
 	g.NoRoute(func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"code": 10003, "message": "Page not found."})
+		core.WriteResponse(c, errno.ErrPageNotFound, nil)
 	})
 
 	// 注册 /healthz handler.
 	g.GET("/healthz", func(c *gin.Context) {
 		log.C(c).Infow("Healthz function called")
+
+		core.WriteResponse(c, nil, map[string]string{"status": "ok"})
 	})
 
 	// 创建 HTTP Server 实例

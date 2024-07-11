@@ -8,7 +8,7 @@ package main
 import (
 	"os"
 
-	_ "go.uber.org/automaxprocs"
+	_ "go.uber.org/automaxprocs/maxprocs"
 
 	"github.com/setcreed/miniblog/internal/miniblog"
 )

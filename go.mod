@@ -4,6 +4,7 @@ go 1.22
 
 require (
 	github.com/gin-gonic/gin v1.10.0
+	github.com/google/uuid v1.4.0
 	github.com/gosuri/uitable v0.0.4
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.5

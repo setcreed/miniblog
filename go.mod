@@ -22,6 +22,7 @@ require (
 	go.uber.org/mock v0.4.0
 	go.uber.org/zap v1.21.0
 	golang.org/x/crypto v0.23.0
+	golang.org/x/sync v0.6.0
 	google.golang.org/grpc v1.62.1
 	google.golang.org/protobuf v1.34.1
 	gorm.io/driver/mysql v1.5.7

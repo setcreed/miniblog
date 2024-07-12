@@ -9,7 +9,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/setcreed/miniblog/internal/miniblog/store"
 	"net"
 	"net/http"
 	"os"
@@ -23,6 +22,7 @@ import (
 	"google.golang.org/grpc"
 
 	"github.com/setcreed/miniblog/internal/miniblog/controller/v1/user"
+	"github.com/setcreed/miniblog/internal/miniblog/store"
 	"github.com/setcreed/miniblog/internal/pkg/known"
 	"github.com/setcreed/miniblog/internal/pkg/log"
 	mw "github.com/setcreed/miniblog/internal/pkg/middleware"
@@ -122,8 +122,7 @@ func run() error {
 	grpcsrv := startGRPCServer()
 
 	// 等待中断信号优雅地关闭服务器（10 秒超时)。
-	//quit := make(chan os.Signal, 1)
-	quit := make(chan os.Signal)
+	quit := make(chan os.Signal, 1)
 	// kill 默认会发送 syscall.SIGTERM 信号
 	// kill -2 发送 syscall.SIGINT 信号，我们常用的 CTRL + C 就是触发系统 SIGINT 信号
 	// kill -9 发送 syscall.SIGKILL 信号，但是不能被捕获，所以不需要添加它

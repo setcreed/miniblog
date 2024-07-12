@@ -20,21 +20,24 @@ func (ctrl *UserController) Update(c *gin.Context) {
 	log.C(c).Infow("Update user function called")
 
 	var r v1.UpdateUserRequest
-	if err := c.ShouldBindJSON(&r); err != nil {
-		core.WriteResponse(c, errno.ErrBind, nil)
+	processRequest(c, &r, func() error {
+		return ctrl.b.Users().Update(c, c.Param("name"), &r)
+	})
+}
 
+func processRequest(c *gin.Context, r interface{}, handler func() error) {
+	if err := c.ShouldBindJSON(r); err != nil {
+		core.WriteResponse(c, errno.ErrBind, nil)
 		return
 	}
 
 	if _, err := govalidator.ValidateStruct(r); err != nil {
 		core.WriteResponse(c, errno.ErrInvalidParameter.SetMessage(err.Error()), nil)
-
 		return
 	}
 
-	if err := ctrl.b.Users().Update(c, c.Param("name"), &r); err != nil {
+	if err := handler(); err != nil {
 		core.WriteResponse(c, err, nil)
-
 		return
 	}
 

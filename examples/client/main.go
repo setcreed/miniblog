@@ -13,10 +13,10 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/credentials/insecure"
 
 	"github.com/setcreed/miniblog/internal/pkg/log"
 	pb "github.com/setcreed/miniblog/pkg/proto/miniblog/v1"
-	"google.golang.org/grpc/credentials/insecure"
 )
 
 var (

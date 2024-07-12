@@ -13,9 +13,10 @@ import (
 	context "context"
 	reflect "reflect"
 
-	model "github.com/setcreed/miniblog/internal/pkg/model"
 	gomock "go.uber.org/mock/gomock"
 	gorm "gorm.io/gorm"
+
+	model "github.com/setcreed/miniblog/internal/pkg/model"
 )
 
 // MockIStore is a mock of IStore interface.

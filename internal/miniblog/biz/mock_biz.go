@@ -12,9 +12,10 @@ package biz
 import (
 	reflect "reflect"
 
+	gomock "go.uber.org/mock/gomock"
+
 	post "github.com/setcreed/miniblog/internal/miniblog/biz/post"
 	user "github.com/setcreed/miniblog/internal/miniblog/biz/user"
-	gomock "go.uber.org/mock/gomock"
 )
 
 // MockIBiz is a mock of IBiz interface.

@@ -13,8 +13,9 @@ import (
 	context "context"
 	reflect "reflect"
 
-	v1 "github.com/setcreed/miniblog/pkg/api/miniblog/v1"
 	gomock "go.uber.org/mock/gomock"
+
+	v1 "github.com/setcreed/miniblog/pkg/api/miniblog/v1"
 )
 
 // MockPostBiz is a mock of PostBiz interface.

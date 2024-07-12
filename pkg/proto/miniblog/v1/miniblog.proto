@@ -9,7 +9,7 @@ package v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/marmotedu/miniblog/pkg/proto/miniblog/v1";
+option go_package = "github.com/setcreed/miniblog/pkg/proto/miniblog/v1";
 
 // MiniBlog 定义了一个 MiniBlog RPC 服务.
 service MiniBlog {

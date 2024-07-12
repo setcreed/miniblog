@@ -5,6 +5,8 @@
 
 package post
 
+//go:generate mockgen -destination mock_post.go -package post github.com/setcreed/miniblog/internal/miniblog/biz/post PostBiz
+
 import (
 	"context"
 	"errors"

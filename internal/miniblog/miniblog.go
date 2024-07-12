@@ -43,7 +43,7 @@ func NewMiniBlogCommand() *cobra.Command {
 		// 命令的详细描述
 		Long: `A good Go practical project, used to create user with basic information.
 Find more miniblog information at:
-	https://github.com/marmotedu/miniblog#readme`,
+	https://github.com/setcreed/miniblog#readme`,
 
 		// 命令出错时，不打印帮助信息。不需要打印帮助信息，设置为 true 可以保持命令出错时一眼就能看到错误信息
 		SilenceUsage: true,

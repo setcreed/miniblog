@@ -3,6 +3,7 @@ module github.com/setcreed/miniblog
 go 1.22
 
 require (
+	github.com/AlekSi/pointer v1.2.0
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/casbin/casbin/v2 v2.97.0
 	github.com/casbin/gorm-adapter/v3 v3.25.0
@@ -15,7 +16,9 @@ require (
 	github.com/spf13/cobra v1.8.1
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.19.0
+	github.com/stretchr/testify v1.9.0
 	go.uber.org/automaxprocs v1.5.3
+	go.uber.org/mock v0.4.0
 	go.uber.org/zap v1.21.0
 	golang.org/x/crypto v0.23.0
 	google.golang.org/grpc v1.62.1
@@ -30,6 +33,7 @@ require (
 	github.com/casbin/govaluate v1.1.0 // indirect
 	github.com/cloudwego/base64x v0.1.4 // indirect
 	github.com/cloudwego/iasm v0.2.0 // indirect
+	github.com/davecgh/go-spew v1.1.2-0.20180830191138-d8f796af33cc // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
 	github.com/fatih/color v1.14.1 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
@@ -68,6 +72,7 @@ require (
 	github.com/onsi/ginkgo v1.16.5 // indirect
 	github.com/onsi/gomega v1.33.1 // indirect
 	github.com/pelletier/go-toml/v2 v2.2.2 // indirect
+	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20230126093431-47fa9a501578 // indirect
 	github.com/rivo/uniseg v0.2.0 // indirect
 	github.com/sagikazarmark/locafero v0.4.0 // indirect

@@ -6,14 +6,14 @@
 package apiserver
 
 import (
-	"encoding/json"
-	"fmt"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
 	"github.com/spf13/viper"
+
+	"github.com/setcreed/miniblog/internal/pkg/log"
 )
 
 // Config 配置结构体，用于存储应用相关的配置.
@@ -36,11 +36,8 @@ func (cfg *Config) NewUnionServer() (*UnionServer, error) {
 
 // Run 运行应用.
 func (s *UnionServer) Run() error {
-	fmt.Printf("JWTKey from ServerOptions: %s\n", s.cfg.JWTKey)
-	fmt.Printf("JWTKey from Viper: %s\n\n", viper.GetString("jwt-key"))
-
-	jsonData, _ := json.MarshalIndent(s.cfg, "", "  ")
-	fmt.Println(string(jsonData))
+	log.Infow("JWTKey from ServerOptions", "jwt-key", s.cfg.JWTKey)
+	log.Infow("JWTKey from Viper", "jwt-key", viper.GetString("jwt-key"))
 
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)

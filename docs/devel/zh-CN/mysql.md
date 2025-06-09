@@ -26,7 +26,7 @@ $ mysql -h127.0.0.1 -P3306 -uroot -p'miniblog1234'
 用 `miniblog` 用户登录 MariaDB，创建 `miniblog` 数据库。创建命令如下。
 
 ```bash
-$ cd $HOME/golang/src/github.com/onexstack/miniblog
+$ cd $HOME/golang/src/github.com/setcreed/miniblog
 $ mysql -h127.0.0.1 -P3306 -u miniblog -p'miniblog1234'
 > source configs/miniblog.sql;
 ```
